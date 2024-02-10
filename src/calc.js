@@ -29,11 +29,14 @@ function calculateResult(num1, num2, operator) {
   }
 }
 
-function checkAnswer(answer, result, name, count) {
+function checkAnswer(answer, result) {
+  let count = 0;
+  const max = 3;
+
   if (Number(answer) === result) {
     count += 1;
     console.log('Correct!');
-    const max = 3;
+
     if (count === max) {
       console.log(`Congratulations, ${name}!`);
     }
