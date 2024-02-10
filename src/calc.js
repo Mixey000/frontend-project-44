@@ -28,15 +28,12 @@ function calculateResult(num1, num2, operator) {
       return null;
   }
 }
-
-function checkAnswer(answer, result) {
-  const count = 0;
-  const max = 3;
-
+let count = 0;
+export function checkAnswer(answer, result) {
   if (Number(answer) === result) {
     count += 1;
     console.log('Correct!');
-
+    const max = 3;
     if (count === max) {
       console.log(`Congratulations, ${name}!`);
     }
@@ -51,7 +48,7 @@ function checkAnswer(answer, result) {
 }
 
 export default function startGameCalc() {
-  const count = 0;
+  // let count = 0;
   const max = 3;
 
   while (count < max) {
@@ -64,7 +61,7 @@ export default function startGameCalc() {
     console.log(`Question: ${randomNumber}`);
     const youranswer = readlineSync.question('Your answer: ');
 
-    count = checkAnswer(youranswer, result, name, count);
+    count = checkAnswer(youranswer, result);
 
     if (!count) {
       break;
