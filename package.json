@@ -1,12 +1,14 @@
 {
-  "type": "module",
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Welcome to my first project",
   "main": "index.js",
+  "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-even": "bin/brain-even.js",
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gcd": "bin/brain-gcd.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "jest": "^29.7.0",
+    "make": "^0.0.0",
+    "node": "^21.6.1",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
