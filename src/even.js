@@ -6,20 +6,26 @@ const name = greetUser();
 
 console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 50);
+}
+
 function isEven(num) {
   return num % 2 === 0;
 }
 
+function getUserAnswer() {
+  return readlineSync.question('Your answer: ');
+}
+
+let count = 0;
+const max = 3;
+
 export default function startGame() {
-  let count = 0;
-  const max = 3;
-
   while (count < max) {
-    const result = Math.floor(Math.random() * 50);
+    const result = generateRandomNumber();
     console.log(`Question: ${result}`);
-
-    const yourAnswer = readlineSync.question('Your answer: ');
-
+    const yourAnswer = getUserAnswer();
     if ((isEven(result) && yourAnswer === 'yes') || (!isEven(result) && yourAnswer === 'no')) {
       count += 1;
       console.log('Correct!');
@@ -31,6 +37,3 @@ export default function startGame() {
       return;
     }
   }
-
-  console.log(`Congratulations, ${name}!`);
-}
