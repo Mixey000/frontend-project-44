@@ -6,14 +6,13 @@ const name = greetUser();
 
 console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-export default function startGame() {
-  
-  const count = 0;
-  const max = 3;
+function isEven(num) {
+  return num % 2 === 0;
+}
 
-  function isEven(num) {
-    return num % 2 === 0;
-  }
+export default function startGame() {
+  let count = 0;
+  const max = 3;
 
   while (count < max) {
     const result = Math.floor(Math.random() * 50);
