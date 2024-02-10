@@ -7,7 +7,8 @@ const name = greetUser();
 console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
 export default function startGame() {
-  let count = 0;
+  
+  const count = 0;
   const max = 3;
 
   function isEven(num) {
