@@ -10,50 +10,63 @@ function generateNumber() {
 
 console.log('What is the result of the expression?');
 
+function generateOperator() {
+  const operators = ['+', '-', '*'];
+  const randomIndex = Math.floor(Math.random() * operators.length);
+  return operators[randomIndex];
+}
+
+function calculateResult(num1, num2, operator) {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      return null;
+  }
+}
+// Создать функцию, проверяющую ответ пользователя и обработку результатов:
+
+
+function checkAnswer(answer, result, name, count) {
+  if (Number(answer) === result) {
+    count += 1;
+    console.log('Correct!');
+    const max = 3;
+    if (count === max) {
+      console.log(`Congratulations, ${name}!`);
+    }
+  } else {
+    console.log(`${answer} is wrong answer ;(. Correct answer was ${result}.`);
+    console.log(`Let's try again, ${name}!`);
+    count = 0;
+    return false;
+  }
+
+  return count;
+}
+// Обновить основную функцию startGameCalc(), чтобы использовать новые функции:
+
 export default function startGameCalc() {
   let count = 0;
   const max = 3;
 
-  function randomOperator() {
-    const operators = ['+', '-', '*'];
-    const randomIndex = Math.floor(Math.random() * operators.length);
-    return operators[randomIndex];
-  }
-
   while (count < max) {
     const num1 = generateNumber();
     const num2 = generateNumber();
-    const operator = randomOperator();
-    let result;
-
-    switch (operator) {
-      case '+':
-        result = num1 + num2;
-        break;
-      case '-':
-        result = num1 - num2;
-        break;
-      case '*':
-        result = num1 * num2;
-        break;
-      default:
-        result = null;
-        break;
-    }
+    const operator = generateOperator();
+    const result = calculateResult(num1, num2, operator);
     const randomNumber = `${num1} ${operator} ${num2}`;
 
     console.log(`Question: ${randomNumber}`);
-
     const youranswer = readlineSync.question('Your answer: ');
 
-    if (Number(youranswer) === result) {
-      count += 1;
-      console.log('Correct!');
-      if (count === max) { console.log(`Congratulations, ${name}!`); }
-    } else {
-      console.log(`${youranswer} is wrong answer ;(. Correct answer was ${result}.`);
-      console.log(`Let's try again,  ${name}!`);
-      count = 0;
+    count = checkAnswer(youranswer, result, name, count);
+
+    if (!count) {
       break;
     }
   }
