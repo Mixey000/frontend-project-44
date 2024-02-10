@@ -18,29 +18,31 @@ function generateNumber() {
   return Math.floor(Math.random() * 100);
 }
 
+function getUserAnswer() {
+  return readlineSync.question('Your answer: ');
+}
+
 console.log('Find the greatest common divisor of given numbers.');
 
-export default function startGameNod() {
-  const max = 3;
-  let count = 0;
+const max = 3;
+let count = 0;
 
+export default function startGameNod() {
   while (count < max) {
     const num1 = generateNumber();
     const num2 = generateNumber();
     const result = getGreatestCommonDivisor(num1, num2);
 
     console.log(`Question: ${num1} ${num2}`);
-
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (Number(userAnswer) === result) {
+    const answer = getUserAnswer();
+    if (Number(answer) === result) {
       count += 1;
       console.log('Correct!');
       if (count === max) {
         console.log(`Congratulations, ${name}!`);
       }
     } else {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${result}.`);
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}.`);
       console.log(`Let's try again, ${name}!`);
       count = 0;
       break;
