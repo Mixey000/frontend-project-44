@@ -21,10 +21,10 @@ return Math.floor(Math.random() * 100);
 console.log('Find the greatest common divisor of given numbers.');
 
 export default function startGameNod() {
-const maxAttempts = 3;
-let correctAnswersCount = 0;
+const max = 3;
+let count = 0;
 
-while (correctAnswersCount < maxAttempts) {
+while (count < max) {
 const num1 = generateNumber();
 const num2 = generateNumber();
 const result = getGreatestCommonDivisor(num1, num2);
@@ -34,15 +34,15 @@ console.log(`Question: ${num1} ${num2}`);
 const userAnswer = readlineSync.question('Your answer: ');
 
 if (Number(userAnswer) === result) {
-  correctAnswersCount++;
+  count+= 1;
   console.log('Correct!');
-  if (correctAnswersCount === maxAttempts) {
+  if (count === max) {
     console.log(`Congratulations, ${name}!`);
   }
 } else {
   console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${result}.`);
   console.log(`Let's try again, ${name}!`);
-  correctAnswersCount = 0;
+  count = 0;
   break;
 }
 }
