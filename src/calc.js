@@ -30,7 +30,7 @@ function calculateResult(num1, num2, operator) {
 }
 
 function checkAnswer(answer, result) {
-  let count = 0;
+  const count = 0;
   const max = 3;
 
   if (Number(answer) === result) {
@@ -51,7 +51,7 @@ function checkAnswer(answer, result) {
 }
 
 export default function startGameCalc() {
-  let count = 0;
+  const count = 0;
   const max = 3;
 
   while (count < max) {
