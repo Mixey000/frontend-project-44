@@ -28,8 +28,6 @@ function calculateResult(num1, num2, operator) {
       return null;
   }
 }
-// Создать функцию, проверяющую ответ пользователя и обработку результатов:
-
 
 function checkAnswer(answer, result, name, count) {
   if (Number(answer) === result) {
@@ -48,7 +46,6 @@ function checkAnswer(answer, result, name, count) {
 
   return count;
 }
-// Обновить основную функцию startGameCalc(), чтобы использовать новые функции:
 
 export default function startGameCalc() {
   let count = 0;
