@@ -22,7 +22,7 @@ console.log('Find the greatest common divisor of given numbers.');
 
 export default function startGameNod() {
   const max = 3;
-  let count = 0;
+  const count = 0;
 
   while (count < max) {
     const num1 = generateNumber();
