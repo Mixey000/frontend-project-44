@@ -37,3 +37,6 @@ export default function startGame() {
       return;
     }
   }
+
+  console.log(`Congratulations, ${name}!`);
+}

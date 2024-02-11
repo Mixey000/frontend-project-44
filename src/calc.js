@@ -29,11 +29,11 @@ function calculateResult(num1, num2, operator) {
   }
 }
 let count = 0;
-export function checkAnswer(answer, result) {
+const max = 3;
+function checkAnswer(answer, result) {
   if (Number(answer) === result) {
     count += 1;
     console.log('Correct!');
-    const max = 3;
     if (count === max) {
       console.log(`Congratulations, ${name}!`);
     }
@@ -43,26 +43,19 @@ export function checkAnswer(answer, result) {
     count = 0;
     return false;
   }
-
   return count;
 }
 
 export default function startGameCalc() {
-  // let count = 0;
-  const max = 3;
-
   while (count < max) {
     const num1 = generateNumber();
     const num2 = generateNumber();
     const operator = generateOperator();
     const result = calculateResult(num1, num2, operator);
     const randomNumber = `${num1} ${operator} ${num2}`;
-
     console.log(`Question: ${randomNumber}`);
     const youranswer = readlineSync.question('Your answer: ');
-
     count = checkAnswer(youranswer, result);
-
     if (!count) {
       break;
     }

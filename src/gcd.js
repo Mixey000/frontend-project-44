@@ -35,6 +35,7 @@ export default function startGameNod() {
 
     console.log(`Question: ${num1} ${num2}`);
     const answer = getUserAnswer();
+
     if (Number(answer) === result) {
       count += 1;
       console.log('Correct!');
