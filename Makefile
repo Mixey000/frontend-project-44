@@ -27,3 +27,6 @@ brain-progression:
 
 function:
 		node src/function.js
+
+brain-prime:
+			node bin/brain-prime.js
