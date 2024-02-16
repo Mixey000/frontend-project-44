@@ -1,8 +1,8 @@
-import readlineSync from 'readline-sync';
+import gameLogig from './game.js';
 
-import greetUser from './cli.js';
+import getRandomNumber from './function.js';
 
-const name = greetUser();
+const task = 'Find the greatest common divisor of given numbers.';
 
 function getGreatestCommonDivisor(a, b) {
   let divisor = 1;
@@ -14,39 +14,14 @@ function getGreatestCommonDivisor(a, b) {
   return divisor;
 }
 
-function generateNumber() {
-  return Math.floor(Math.random() * 100);
+function getQuestion() {
+  const num1 = getRandomNumber(1, 100);
+  const num2 = getRandomNumber(1, 100);
+  console.log(`Question: ${num1} ${num2}`);
+  const answer = getGreatestCommonDivisor(num1, num2);
+  return answer.toString();
 }
 
-function getUserAnswer() {
-  return readlineSync.question('Your answer: ');
-}
-
-console.log('Find the greatest common divisor of given numbers.');
-
-const max = 3;
-let count = 0;
-
-export default function startGameNod() {
-  while (count < max) {
-    const num1 = generateNumber();
-    const num2 = generateNumber();
-    const result = getGreatestCommonDivisor(num1, num2);
-
-    console.log(`Question: ${num1} ${num2}`);
-    const answer = getUserAnswer();
-
-    if (Number(answer) === result) {
-      count += 1;
-      console.log('Correct!');
-      if (count === max) {
-        console.log(`Congratulations, ${name}!`);
-      }
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}.`);
-      console.log(`Let's try again, ${name}!`);
-      count = 0;
-      break;
-    }
-  }
+export default function startGame() {
+  return gameLogig(task, getQuestion);
 }

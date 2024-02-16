@@ -1,10 +1,8 @@
-import readlineSync from 'readline-sync';
+import gameLogig from './game.js';
 
-import greetUser from './cli.js';
+import getRandomNumber from './function.js';
 
-const name = greetUser();
-
-console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime(num) {
   if (num <= 1) {
@@ -19,27 +17,12 @@ function isPrime(num) {
 
   return true;
 }
-
-function randomNumber() {
-  return Math.floor(Math.random() * 50);
+export function getQuestion() {
+  const number = getRandomNumber(1, 100);
+  const isPrimeNumber = isPrime(number);
+  console.log(`Question: ${number}`);
+  return isPrimeNumber ? 'yes' : 'no';
 }
-
-const max = 3;
-let count = 0;
-
 export default function startGame() {
-  while (count < max) {
-    console.log(`Question: ${randomNumber()}`);
-    const answer = readlineSync.question('Your answer: ');
-
-    const isPrimeNumber = isPrime(randomNumber);
-
-    if ((isPrimeNumber && answer === 'yes') || (!isPrimeNumber && answer === 'no')) {
-      count += 1;
-      console.log('Correct!');
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${isPrimeNumber ? 'yes' : 'no'}`);
-      break;
-    }
-  } console.log(`Congratulations, ${name}!`);
+  return gameLogig(task, getQuestion);
 }
