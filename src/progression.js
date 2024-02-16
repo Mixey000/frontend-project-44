@@ -1,14 +1,8 @@
-import readlineSync from 'readline-sync';
+import getRandomNumber from './function.js';
 
-import greetUser from './cli.js';
+import gameLogig from './game.js';
 
-const name = greetUser();
-
-console.log('What number is missing in the progression?');
-
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const task = 'What number is missing in the progression?';
 
 function generateProgression(length, firstNumber, step) {
   const progression = [];
@@ -28,33 +22,19 @@ function generateProgression(length, firstNumber, step) {
   };
 }
 
-const max = 3;
-let count = 0;
-
 function makeQuestion(progression) {
   return console.log(`Question: ${progression.join(' ')}`);
 }
-console.log('What number was replaced by dots?');
 
-export default function startGameNod() {
-  while (count < max) {
-    const firstNumber = getRandomNumber(0, 100);
-    const step = getRandomNumber(1, 10);
-    const result = generateProgression(10, firstNumber, step);
-    makeQuestion(result.progression);
-    const answer = readlineSync.question('Your answer: ');
+function getQuestion() {
+  const firstNumber = getRandomNumber(0, 100);
+  const step = getRandomNumber(1, 10);
+  const result = generateProgression(10, firstNumber, step);
+  makeQuestion(result.progression);
 
-    if (Number(answer) === firstNumber + step * result.hiddenIndex) {
-      count += 1;
-      console.log('Correct!');
-      if (count === max) {
-        console.log(`Congratulations, ${name}!`);
-      }
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${firstNumber + step * result.hiddenIndex}.`);
-      console.log(`Let's try again, ${name}!`);// ${result.progression.join(' ')}result.progression[result.hiddenIndex]
-      count = 0;
-      break;
-    }
-  }
+  return firstNumber + step * result.hiddenIndex;
+}
+
+export default function startGame() {
+  return gameLogig(task, getQuestion);
 }

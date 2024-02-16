@@ -9,7 +9,7 @@ export default function gameLogig(task, getQuestion) {
   while (count < maxAttempts) {
     const answer = getQuestion();
     const yourAnswer = readlineSync.question('Your answer: ');
-    if (yourAnswer === answer) {
+    if (yourAnswer === answer || Number(yourAnswer) === answer) {
       count += 1;
       console.log('Correct!');
     } else {
