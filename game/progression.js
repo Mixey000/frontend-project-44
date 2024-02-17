@@ -1,6 +1,6 @@
-import getRandomNumber from './function.js';
+import getRandomNumber from '../src/function.js';
 
-import gameLogig from './game.js';
+import gameLogig from '../src/gameLogic.js';
 
 const task = 'What number is missing in the progression?';
 

@@ -1,8 +1,8 @@
-import gameLogig from './game.js';
+import gameLogig from '../src/gameLogic.js';
 
-import getRandomNumber from './function.js';
+import getRandomNumber from '../src/function.js';
 
-const task = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+const task = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function isEven(num) {
   return num % 2 === 0;

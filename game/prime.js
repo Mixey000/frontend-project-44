@@ -1,6 +1,6 @@
-import gameLogig from './game.js';
+import gameLogig from '../src/gameLogic.js';
 
-import getRandomNumber from './function.js';
+import getRandomNumber from '../src/function.js';
 
 const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 

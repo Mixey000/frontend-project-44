@@ -1,6 +1,6 @@
-import gameLogig from './game.js';
+import gameLogig from '../src/gameLogic.js';
 
-import getRandomNumber from './function.js';
+import getRandomNumber from '../src/function.js';
 
 const task = 'What is the result of the expression?';
 
